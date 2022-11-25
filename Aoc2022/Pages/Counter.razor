@@ -1,0 +1,12 @@
+<h3>Counter @currentCount</h3>
+
+<button @onclick="IncrementCounter">Clicky</button>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCounter()
+    {
+        currentCount++;
+    }
+}
