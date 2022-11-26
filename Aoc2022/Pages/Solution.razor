@@ -1,0 +1,41 @@
+@page "/Solution/{Day}"
+@inject ISolutionFactory SolutionFactory
+
+<Menu></Menu>
+
+<h2>Dec @Day</h2>
+<h3>@Name</h3>
+
+<button @onclick="S1">Solution 1</button>
+<button @onclick="S2">Solution 2</button>
+
+<pre>@SolutionText</pre>
+
+@code {
+
+    [Parameter]
+    public string Day { get; set; } = "";
+
+    private string Name { get; set; } = "";
+
+    private ISolution? AocSolution { get; set; }
+
+    private string SolutionText { get; set; } = "";
+
+    private void S1()
+    {
+        SolutionText = AocSolution!.Solution1();
+    }
+
+    private void S2()
+    {
+        SolutionText = AocSolution!.Solution2();
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        AocSolution = SolutionFactory.GetSolution(Day);
+        Name = AocSolution.Name;
+        return Task.CompletedTask;
+    }
+}
