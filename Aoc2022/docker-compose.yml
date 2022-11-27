@@ -1,5 +1,5 @@
 services:
   aoc2022:
-    image: cloud.canister.io:5000/topz/aoc2022:0.1
+    image: cloud.canister.io:5000/topz/aoc2022:0.2
     ports:
       - "8080:80"
